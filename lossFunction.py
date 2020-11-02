@@ -48,4 +48,4 @@ def predictFunc(mode):
 
 def gradZ(a, y):
     return a - y
-
+    
