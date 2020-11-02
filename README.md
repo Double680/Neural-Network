@@ -1,4 +1,4 @@
 # Neural-Network
-Training Programs of Neural Network.
 
-Add a new line of "Hello world!"
+Training Programs of Neural Network.
+Started on Nov 2nd, 2020
