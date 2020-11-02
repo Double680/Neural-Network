@@ -44,3 +44,4 @@ def gradActivate(mode): # Gradient of Activate Function
         return gradTanh
     elif mode == "relu":
         return gradRelu
+    
