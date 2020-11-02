@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[21]:
-
-
 import numpy as np
 
 # "mode" can be value of "reg", "biClassify", "mulClassify"
@@ -54,5 +48,3 @@ def predictFunc(mode):
 
 def gradZ(a, y):
     return a - y
-    
-
