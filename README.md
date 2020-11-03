@@ -24,5 +24,5 @@ $$a=Softmax(z),a_k=\frac{e^k}{\sum_{j=1}^pe^j},\forall k$$
 
 ## Activate Function
 
-We can use `sigmoid`, `tanh`, `relu` now, and also ignore it with `none`.
+We can use `sigmoid`, `tanh`, `relu` now, or also ignore it with `none`.
  
