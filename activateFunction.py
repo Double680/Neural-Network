@@ -16,12 +16,18 @@ def activateFunc(mode): # Activate Function
         a = np.maximum(z, 0)
         return a
     
+    def none(z):
+        a = z
+        return a
+    
     if mode == "sigmoid":
         return sigmoid
     elif mode == "tanh":
         return tanh
     elif mode == "relu":
         return relu
+    elif mode == "none":
+        return none
 
 def gradActivate(mode): # Gradient of Activate Function
     def gradSigmoid(z):
@@ -37,6 +43,9 @@ def gradActivate(mode): # Gradient of Activate Function
     def gradRelu(z):
         grad = activateFunc("relu")(np.sign(z))
         return grad
+    
+    def gradNone(z):
+        grad = np.ones(np.shape(z))
         
     if mode == "sigmoid":
         return gradSigmoid
@@ -44,4 +53,6 @@ def gradActivate(mode): # Gradient of Activate Function
         return gradTanh
     elif mode == "relu":
         return gradRelu
-    
+    elif mode == "none":
+        return gradNone
+ 
