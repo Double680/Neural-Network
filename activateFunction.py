@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[7]:
+
+
 import numpy as np
 
 # "mode" can be value of "sigmoid", "tanh" or "relu"
@@ -55,4 +61,4 @@ def gradActivate(mode): # Gradient of Activate Function
         return gradRelu
     elif mode == "none":
         return gradNone
- 
+

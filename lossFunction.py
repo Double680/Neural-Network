@@ -1,6 +1,12 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[3]:
+
+
 import numpy as np
 
-# "mode" can be value of "reg", "biClassify", "mulClassify"
+# "mode" can be value of "reg", "biC", "mulC"
 # "a", "y" SHOULD be 2D-numpy array in size of (n, p) = (number of samples, number of features)
 # "loss" is 1D-numpy array in size of n = number of samples
 # "z" SHOULD be 2D-numpy array in size of (n, p) = (number of samples, number of features)
@@ -10,20 +16,20 @@ def lossFunc(mode):
         loss = np.sum( (a - y)**2, axis=1) / 2
         return loss
     
-    def lossBiClassify(a, y):
+    def lossBiC(a, y):
         loss = np.sum( -(y*np.log(a) + (1-y)*np.log(1-a) ), axis=1)
         return loss
     
-    def lossMulClassify(a, y):
+    def lossMulC(a, y):
         loss = np.sum( -y*np.log(a), axis=1)
         return loss
     
     if mode == "reg":
         return lossReg
-    elif mode == "biClassify":
-        return lossBiClassify
-    elif mode == "mulClassify":
-        return lossMulClassify
+    elif mode == "biC":
+        return lossBiC
+    elif mode == "mulC":
+        return lossMulC
     
 def predictFunc(mode): 
     def noChange(z):
@@ -41,11 +47,9 @@ def predictFunc(mode):
     
     if mode == "reg":
         return noChange
-    elif mode == "biClassify":
+    elif mode == "biC":
         return logistic
-    elif mode == "mulClassify":
+    elif mode == "mulC":
         return softmax    
-
-def gradZ(a, y):
-    return a - y
     
+
