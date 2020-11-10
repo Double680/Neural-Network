@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[4]:
 
 
 import numpy as np
 
-# "mode" can be value of "sigmoid", "tanh" or "relu"
+# "mode" can be value of "logistic", "tanh", "relu" or "none" (default)
 # "z" SHOULD be 2D-numpy array in size of (n, p) = (number of samples, number of features)
 
-def activateFunc(mode): # Activate Function   
-    def sigmoid(z):
+def activateFunc(mode="none"): # Activate Function   
+    def logistic(z):
         a = 1 / ( 1 + np.exp(-z) )
         return a
     
     def tanh(z):
-        a = 2 * sigmoid(2*z) - 1
+        a = 2 * logistic(2*z) - 1
         return a
     
     def relu(z):
@@ -26,18 +26,18 @@ def activateFunc(mode): # Activate Function
         a = z
         return a
     
-    if mode == "sigmoid":
-        return sigmoid
+    if mode == "logistic":
+        return logistic
     elif mode == "tanh":
         return tanh
     elif mode == "relu":
         return relu
-    elif mode == "none":
-        return none
+    
+    return none
 
-def gradActivate(mode): # Gradient of Activate Function
-    def gradSigmoid(z):
-        a = activateFunc("sigmoid")(z)
+def gradActivate(mode="none"): # Gradient of Activate Function
+    def gradLogistic(z):
+        a = activateFunc("logistic")(z)
         grad = a * (1-a)
         return grad
     
@@ -53,12 +53,12 @@ def gradActivate(mode): # Gradient of Activate Function
     def gradNone(z):
         grad = np.ones(np.shape(z))
         
-    if mode == "sigmoid":
-        return gradSigmoid
+    if mode == "logistic":
+        return gradLogistic
     elif mode == "tanh":
         return gradTanh
     elif mode == "relu":
         return gradRelu
-    elif mode == "none":
-        return gradNone
+    
+    return gradNone
 

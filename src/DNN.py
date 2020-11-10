@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4386]:
+# In[1]:
 
 
 import numpy as np
-import lossFunction as lossF
-from netLayer import netLayer
-from weightInit import weightInit
+import basic.lossFunction as lossF
+from basic.netLayer import netLayer
+from basic.weightInit import weightInit
 
 class deepNeuralNetwork():
     def __init__(self, x, y, taskMode):
@@ -17,7 +17,7 @@ class deepNeuralNetwork():
         self.numSample = self.x.shape[0]
         
         # WeightMatrix Initialization
-        self.initMode = "zero"
+        self.initMode = "random"
         self.initDistribution = "normal"
         self.initSubmode = "inputNode"
         
@@ -41,11 +41,12 @@ class deepNeuralNetwork():
         self.numLayer += 1
         self.layerSet.append(netLayer(layerMode, numNode, activeMode)) 
             
-        W = weightInit(lastLayerNode, numNode, self.initMode,
+        weightMatrix = weightInit(lastLayerNode, numNode, self.initMode,
                        self.initDistribution, self.initSubmode)
-        B = np.random.normal(0, 1, (1, numNode))
-        self.weightSet.append(W)
-        self.biasSet.append(B)  
+        biasMatrix = np.random.normal(0, 1, (1, numNode))
+        
+        self.weightSet.append(weightMatrix)
+        self.biasSet.append(biasMatrix)  
         
     def removeLayer(self):
         if self.numLayer != 0:
@@ -129,7 +130,7 @@ class deepNeuralNetwork():
         
 
 
-# In[4492]:
+# In[2]:
 
 
 X = np.random.uniform(-10, 10, (100, 2))
@@ -142,7 +143,7 @@ net.setInitMode("Xavier")
 net.setLearningRate(5e-5)
 
 
-# In[4493]:
+# In[3]:
 
 
 net.train(10)
